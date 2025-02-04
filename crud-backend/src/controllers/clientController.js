@@ -16,7 +16,7 @@ export const createClient = async (req, res) => {
         const newClient = await clientService.createClient(clientData);
         res.status(200).json(newClient);
     } catch (err) {
-        console.error('Error fetching clients:', err);
+        console.error('Error creating client:', err);
         res.status(500).json({message: 'Internal Server Error 2'});
     }
 };
@@ -33,6 +33,21 @@ export const updateClient = async (req, res) => {
 
     } catch (err) { 
         console.error('Error updating client:', err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+export const deleteClient = async (req, res) => {
+    try {
+        const clientId = req.params.id;
+        const deleted = await clientService.deleteClient(clientId);
+        if (!deleted) {
+            return res.status(404).json({ message: 'Client not found' });
+        }
+        res.status(200).send();
+
+    } catch (err) { 
+        console.error('Error deleting client:', err);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
