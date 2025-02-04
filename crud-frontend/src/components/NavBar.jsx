@@ -1,6 +1,6 @@
-export default function NavBar() {
+export default function NavBar({ onOpen }) {
     return(
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 p-4">
         <div className="navbar-start">
             
             <a className="btn btn-ghost text-xl">Clients</a>
@@ -11,7 +11,7 @@ export default function NavBar() {
             </div>
         </div>
         <div className="navbar-end">
-            <a className="btn btn-primary">Button</a>
+            <a className="btn btn-primary" onClick={onOpen}>Add Client</a>
         </div>
         </div>
     )

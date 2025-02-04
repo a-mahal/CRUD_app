@@ -1,4 +1,4 @@
-export default function TableList() {
+export default function TableList({ handleOpen }) {
     
     const clients = [
         {id: 1, name: "John Doe", email: "johndoe@gamil.com", job: "Developer", rate: "100", isactive: true},
@@ -37,7 +37,7 @@ export default function TableList() {
                             </button>
                         </td>
                         <td>
-                            <button className="btn btn-secondary">
+                            <button onClick={() => handleOpen('edit')} className="btn btn-secondary">
                                 Update
                             </button>
                         </td>
