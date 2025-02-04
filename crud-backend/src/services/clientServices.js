@@ -6,14 +6,12 @@ export const getClients = async() => {
 }
 
 export const createClient = async(clientData) => {
-    const { name, email, job, rate, isactive } = clientData
-
+    const { name, email, job, rate, isactive } = clientData;
     const { rows } = await query(
         `INSERT INTO clients_tb (name, email, job, rate, isactive) 
-         VALUES ($1, $2, $3, $3, $5) RETURNING *`,
+         VALUES ($1, $2, $3, $4, $5) RETURNING *`,
         [name, email, job, rate, isactive]
-        );
-
-    {/* returns what you inserted */}
+      );
+    
     return rows[0];
 }
