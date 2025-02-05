@@ -65,7 +65,7 @@ export default function TableList({ handleOpen, tableData, searchTerm, setTableD
                                 </button>
                             </td>
                             <td>
-                                <button onClick={() => handleDelete(client.id)} className="btn btn-accent">
+                                <button onClick={() => handleDelete(client.id)} className="btn btn-neutral">
                                     Delete
                                 </button>
                             </td>
