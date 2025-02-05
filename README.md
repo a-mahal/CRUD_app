@@ -14,3 +14,8 @@
 - postgreSQL
     - pgAdmin4
 - postman
+
+
+run "npm run dev" in the frontend directory
+run "npx nodemon src/index.js" to start the backend server
+backend db is run through pgadmin4
