@@ -5,6 +5,7 @@
     - vite: 
     - TailwindCSS
         - DaisyUI
+- axios: for API calls
 ### Frontend
 - Node.js
 - express
