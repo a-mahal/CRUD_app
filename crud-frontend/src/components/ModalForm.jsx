@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function ModalForm({ isOpen, onClose, mode, OnSubmit, clientData}) {
     const [rate, setRate] = useState('');
@@ -16,11 +16,30 @@ export default function ModalForm({ isOpen, onClose, mode, OnSubmit, clientData}
         try {
             const clientData = {name, email, job, rate: Number(rate), isactive: status}
             await OnSubmit(clientData)
+            onClose();
         } catch (err) {
             console.error("Error adding client", err)
         }
         onClose();
     }
+
+    {/* This is for the edit section, we first need to populate the values of the edit modal, or keep them empty for the add modal */}
+    useEffect(() => {
+        if (mode === 'edit' && clientData) {
+            setName(clientData.name);
+            setEmail(clientData.email);
+            setJob(clientData.job);
+            setRate(clientData.rate);
+            setStatus(clientData.isActive); // Assuming isActive is a boolean
+        } else {
+            // Reset fields when adding a new client
+            setName('');
+            setEmail('');
+            setJob('');
+            setRate('');
+            setStatus(false);
+        }
+    }, [mode, clientData]); // mode is either "add" or "edit", clientdata is the data or blank
 
 
     return (
